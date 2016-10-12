@@ -4,6 +4,8 @@
 /public/js
 /vendor
 /.idea
+_ide_helper.php
+.phpstorm.meta.php
 Homestead.json
 Homestead.yaml
 yarn.lock

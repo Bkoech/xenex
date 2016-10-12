@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Xenex\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
+    protected $namespace = 'Xenex\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -55,7 +55,9 @@ class RouteServiceProvider extends ServiceProvider
             'middleware' => 'web',
             'namespace' => $this->namespace,
         ], function ($router) {
-            require base_path('routes/web.php');
+            foreach (glob(base_path('routes/web/*.php')) as $file) {
+                require $file;
+            }
         });
     }
 
@@ -73,7 +75,9 @@ class RouteServiceProvider extends ServiceProvider
             'namespace' => $this->namespace,
             'prefix' => 'api',
         ], function ($router) {
-            require base_path('routes/api.php');
+            foreach (glob(base_path('routes/api/*.php')) as $file) {
+                require $file;
+            }
         });
     }
 }
