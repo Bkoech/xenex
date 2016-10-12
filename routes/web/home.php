@@ -1,4 +1,3 @@
-
-Auth::routes();
+<?php
 
 Route::get('/home', 'HomeController@index');
