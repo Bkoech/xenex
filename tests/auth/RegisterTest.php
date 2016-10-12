@@ -5,6 +5,18 @@ class RegisterTest extends TestCase
 {
     use DatabaseToTest;
 
+    public function setUp()
+    {
+        parent::setUp();
+        $this->initDatabase();
+    }
+
+    public function tearDown()
+    {
+        $this->resetDatabase();
+        parent::tearDown();
+    }
+
     public function testRegisterPage()
     {
         $this->visit('/register')
