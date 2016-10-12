@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Xenex\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
