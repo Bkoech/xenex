@@ -17,7 +17,7 @@ class RegisterController extends Controller
     protected $validatorRules = [
         'name' => 'required|max:255',
         'email' => 'required|email|max:255|unique:users',
-        'password' => 'required|min:6|confirmed'
+        'password' => 'required|min:6|confirmed',
     ];
 
     public function __construct()
@@ -47,6 +47,7 @@ class RegisterController extends Controller
     {
         $user = $request->only(array_keys($this->validatorRules));
         $user['password'] = bcrypt($user['password']);
+
         return $user;
     }
 }

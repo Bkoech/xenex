@@ -29,6 +29,7 @@ class Service
     public function action(array $data): User
     {
         event(new Registered($user = User::create($data)));
+
         return $user;
     }
 }

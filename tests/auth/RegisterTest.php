@@ -130,5 +130,4 @@ class RegisterTest extends TestCase
         $this->seePageIs('/register')
              ->see(trans('validation.max.string', ['attribute' => 'name', 'max' => '255']));
     }
-
 }
