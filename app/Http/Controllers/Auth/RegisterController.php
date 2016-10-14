@@ -7,7 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
-use Xenex\Components\Auth\Register\Service;
+use Xenex\Components\Auth\Register\Service as RegisterService;
 use Xenex\Http\Controllers\Controller;
 
 class RegisterController extends Controller
@@ -32,7 +32,7 @@ class RegisterController extends Controller
 
     public function postRegister(Request $request): RedirectResponse
     {
-        $service = new Service();
+        $service = new RegisterService();
         $validator = $service->validator($request->all(), $this->validatorRules);
         if ($validator->fails()) {
             throw new ValidationException($validator);
