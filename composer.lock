@@ -3884,16 +3884,16 @@
         },
         {
             "name": "tightenco/mailthief",
-            "version": "v0.3.1",
+            "version": "v0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/mailthief.git",
-                "reference": "4a341566a41042da9e83397929c55cdc0caa27e6"
+                "reference": "a42277459092ae87f5ac11271f969625509f7f49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/mailthief/zipball/4a341566a41042da9e83397929c55cdc0caa27e6",
-                "reference": "4a341566a41042da9e83397929c55cdc0caa27e6",
+                "url": "https://api.github.com/repos/tightenco/mailthief/zipball/a42277459092ae87f5ac11271f969625509f7f49",
+                "reference": "a42277459092ae87f5ac11271f969625509f7f49",
                 "shasum": ""
             },
             "require": {
@@ -3922,7 +3922,7 @@
                 }
             ],
             "description": "A fake Mailer for Laravel applications that takes the pain out of testing mail.",
-            "time": "2016-09-13 16:55:31"
+            "time": "2016-10-12 22:32:47"
         },
         {
             "name": "webmozart/assert",

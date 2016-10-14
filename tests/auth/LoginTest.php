@@ -25,6 +25,7 @@ class LoginTest extends TestCase
 
     public function testLoginSuccess()
     {
+        $this->expectsEvents(\Illuminate\Auth\Events\Login::class);
         $user = factory(\Xenex\User::class)->create([
             'password' => bcrypt($password = str_random(20)),
         ]);
@@ -44,11 +45,34 @@ class LoginTest extends TestCase
         ]);
 
         $this->visit('/login')
-            ->type($user->email, 'email')
-            ->type($password, 'password')
-            ->press('登入');
+             ->type($user->email, 'email')
+             ->type($password, 'password')
+             ->press('登入');
 
         $this->seePageIs('/login')
              ->see(trans('auth.failed'));
+    }
+
+    public function testLoginFailTooManyRequests()
+    {
+        $user = factory(\Xenex\User::class)->create([
+            'password' => bcrypt($password = str_random(20)),
+        ]);
+        $throttleCount = 10;
+
+        while ($throttleCount--) {
+            $this->visit('/login')
+                 ->type($user->email, 'email')
+                 ->type(str_random(19), 'password')
+                 ->press('登入');
+        }
+
+        $this->visit('/login')
+             ->type($user->email, 'email')
+             ->type($password, 'password')
+             ->press('登入');
+
+        $this->seePageIs('/login')
+             ->see(trans('auth.throttle'));
     }
 }
