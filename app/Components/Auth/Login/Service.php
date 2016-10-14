@@ -26,20 +26,19 @@ class Service
             throw new TooManyRequestsException();
         }
 
-        if(!Auth::attempt($credentials, $remember)) {
+        if (! Auth::attempt($credentials, $remember)) {
             throw new LoginFailedException();
         }
     }
 
     protected function throttle(string $hash): bool
     {
-        if (!Cache::has($hash)) {
+        if (! Cache::has($hash)) {
             Cache::put($hash, $this->throttleCount, $this->throttleTime);
-        }
-        else {
+        } else {
             Cache::decrement($hash);
         }
 
-        return (Cache::get($hash) === 0);
+        return Cache::get($hash) === 0;
     }
 }

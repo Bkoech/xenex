@@ -35,12 +35,13 @@ class LoginController extends Controller
         $service = new LoginService();
 
         $validator = $service->validator($request->all(), $this->validatorRules);
-        if($validator->fails()) {
+        if ($validator->fails()) {
             throw new ValidationException($validator);
         }
 
         try {
             $service->action($request->only(array_keys($this->validatorRules)), $request->has('remember'));
+
             return redirect($this->redirect ?? '/home');
         } catch (LoginFailedException $e) {
             return redirect('/login')->withErrors(['email' => trans('auth.failed')]);

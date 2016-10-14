@@ -60,7 +60,7 @@ class LoginTest extends TestCase
         ]);
         $throttleCount = 10;
 
-        while($throttleCount--) {
+        while ($throttleCount--) {
             $this->visit('/login')
                  ->type($user->email, 'email')
                  ->type(str_random(19), 'password')

@@ -4,7 +4,6 @@ namespace Xenex\Http\Controllers\auth;
 
 use Auth;
 use Illuminate\Http\RedirectResponse;
-use Xenex\Http\Requests;
 use Xenex\Http\Controllers\Controller;
 
 class LogoutController extends Controller
