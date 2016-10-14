@@ -25,7 +25,6 @@ class LoginTest extends TestCase
 
     public function testLoginSuccess()
     {
-        $this->expectsEvents(\Illuminate\Auth\Events\Login::class);
         $user = factory(\Xenex\User::class)->create([
             'password' => bcrypt($password = str_random(20)),
         ]);
@@ -36,6 +35,7 @@ class LoginTest extends TestCase
              ->press('登入');
 
         $this->seePageIs('/home');
+        $this->assertTrue(Auth::check());
     }
 
     public function testLoginFailUserNotMatch()
@@ -51,6 +51,7 @@ class LoginTest extends TestCase
 
         $this->seePageIs('/login')
              ->see(trans('auth.failed'));
+        $this->assertFalse(Auth::check());
     }
 
     public function testLoginFailTooManyRequests()
@@ -74,5 +75,6 @@ class LoginTest extends TestCase
 
         $this->seePageIs('/login')
              ->see(trans('auth.throttle'));
+        $this->assertFalse(Auth::check());
     }
 }
