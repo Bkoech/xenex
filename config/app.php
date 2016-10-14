@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Xenex',
 
     /*
     |--------------------------------------------------------------------------
@@ -172,11 +172,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Xenex\Providers\AppServiceProvider::class,
+        Xenex\Providers\AuthServiceProvider::class,
+        // Xenex\Providers\BroadcastServiceProvider::class,
+        Xenex\Providers\EventServiceProvider::class,
+        Xenex\Providers\RouteServiceProvider::class,
 
     ],
 

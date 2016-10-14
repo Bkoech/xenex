@@ -1,71 +1,53 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Xenex\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
+use Xenex\Components\Auth\Register\Service as RegisterService;
+use Xenex\Http\Controllers\Controller;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
+    protected $view = 'auth.register';
+    protected $redirect = '/home';
+    protected $validatorRules = [
+        'name' => 'required|max:255',
+        'email' => 'required|email|max:255|unique:users',
+        'password' => 'required|min:6|confirmed',
+    ];
 
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function getRegister(): View
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        return view($this->view ?? 'auth.register');
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
+    public function postRegister(Request $request): RedirectResponse
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $service = new RegisterService();
+        $validator = $service->validator($request->all(), $this->validatorRules);
+        if ($validator->fails()) {
+            throw new ValidationException($validator);
+        }
+
+        Auth::login($service->action($this->userdata($request)));
+
+        return redirect($this->redirect ?? '/home');
+    }
+
+    protected function userdata(Request $request): array
+    {
+        $user = $request->only(array_keys($this->validatorRules));
+        $user['password'] = bcrypt($user['password']);
+
+        return $user;
     }
 }
