@@ -9,7 +9,6 @@ use Xenex\Components\Auth\ResetPassword\InvalidPasswordException;
 use Xenex\Components\Auth\ResetPassword\InvalidTokenException;
 use Xenex\Components\Auth\ResetPassword\Service as ResetPasswordService;
 use Xenex\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
 {
@@ -44,6 +43,7 @@ class ResetPasswordController extends Controller
 
         try {
             $response = $service->action($request->only(array_keys($this->validatorRules)));
+
             return redirect($this->redirect ?? '/home')->with('status', trans($response));
         } catch (InvalidPasswordException $e) {
             return redirect()->back()->withErrors(['email' => trans($e->getMessage())]);

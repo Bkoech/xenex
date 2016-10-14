@@ -5,7 +5,6 @@ namespace Xenex\Components\Auth\ResetPassword;
 use Auth;
 use Password;
 use Validator;
-use Xenex\User;
 
 class Service
 {
@@ -20,17 +19,14 @@ class Service
 
     public function action(array $data)
     {
-        $response = Password::broker()->reset($data, function($user, $password) {
-            /**
-             * @var $user User
-             */
+        $response = Password::broker()->reset($data, function ($user, $password) {
             $user->update([
                 'password' => bcrypt($password),
             ]);
             Auth::login($user);
         });
 
-        switch($response) {
+        switch ($response) {
             case Password::PASSWORD_RESET:
                 return $response;
             case Password::INVALID_PASSWORD:
