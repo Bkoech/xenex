@@ -38,4 +38,16 @@ class ForgotPasswordTest extends TestCase
             'email' => $user->email,
         ]);
     }
+
+    public function testForgotFailInvalidUser()
+    {
+        $user = factory(\Xenex\User::class)->make();
+
+        $this->visit('/password/reset')
+             ->type($user->email, 'email')
+             ->press('寄發密碼重設信件');
+
+        $this->seePageIs('/password/reset')
+             ->see(trans('validation.exists', ['attribute' => 'email']));
+    }
 }
