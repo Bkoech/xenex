@@ -19,11 +19,11 @@ class LogoutTest extends TestCase
 
     public function testLogout()
     {
-        $this->expectsEvents(\Illuminate\Auth\Events\Logout::class);
-
         $user = factory(\Xenex\User::class)->create();
         $this->actingAs($user);
 
         $this->post('/logout');
+
+        $this->assertFalse(Auth::check());
     }
 }
