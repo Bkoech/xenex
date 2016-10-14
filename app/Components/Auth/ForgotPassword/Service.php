@@ -22,9 +22,7 @@ class Service
 
         if ($response === Password::INVALID_USER) {
             throw new InvalidUserException($response);
-        }
-
-        else if ($response === Password::RESET_LINK_SENT) {
+        } elseif ($response === Password::RESET_LINK_SENT) {
             return $response;
         }
 

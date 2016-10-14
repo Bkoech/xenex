@@ -10,7 +10,6 @@ use Xenex\Components\Auth\ForgotPassword\InvalidUserException;
 use Xenex\Components\Auth\ForgotPassword\UnknownResponseException;
 use Xenex\Http\Controllers\Controller;
 use Xenex\Components\Auth\ForgotPassword\Service as ForgotPasswordService;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
 {
@@ -40,6 +39,7 @@ class ForgotPasswordController extends Controller
 
         try {
             $response = $service->action($request->only(array_keys($this->validatorRules)));
+
             return redirect()->back()->with('status', trans($response));
         } catch (InvalidUserException $e) {
             return redirect()->back()->withErrors(trans($e->getMessage()));
