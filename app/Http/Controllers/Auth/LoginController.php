@@ -10,7 +10,6 @@ use Xenex\Components\Auth\Login\LoginFailedException;
 use Xenex\Components\Auth\Login\Service as LoginService;
 use Xenex\Components\Auth\Login\TooManyRequestsException;
 use Xenex\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
