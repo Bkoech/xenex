@@ -25,6 +25,7 @@ class LoginTest extends TestCase
 
     public function testLoginSuccess()
     {
+        $this->expectsEvents(\Illuminate\Auth\Events\Login::class);
         $user = factory(\Xenex\User::class)->create([
             'password' => bcrypt($password = str_random(20)),
         ]);

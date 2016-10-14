@@ -26,6 +26,7 @@ class RegisterTest extends TestCase
 
     public function testRegisterSuccess()
     {
+        $this->expectsEvents(\Illuminate\Auth\Events\Registered::class);
         $user = factory(\Xenex\User::class)->make([
             'password' => bcrypt($password = str_random(20)),
         ]);
@@ -41,7 +42,6 @@ class RegisterTest extends TestCase
             'email' => $user->email,
             'name' => $user->name,
         ]);
-
         $this->assertTrue(\Hash::check($password, \Xenex\User::where('email', $user->email)->first()->password));
     }
 
