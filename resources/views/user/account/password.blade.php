@@ -60,7 +60,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-offset-4 col-md-6">
-                                    <button class="btn btn-primary">修改帳號資料</button>
+                                    <button class="btn btn-primary">修改密碼</button>
                                 </div>
                             </div>
                         </form>

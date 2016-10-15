@@ -24,6 +24,7 @@ class Service
 
         if (Hash::check($data['current_password'], $user->password)) {
             $user->password = bcrypt($data['password']);
+
             return $user->save();
         }
 

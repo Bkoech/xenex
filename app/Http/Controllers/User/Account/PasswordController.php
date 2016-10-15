@@ -41,9 +41,11 @@ class PasswordController extends Controller
         try {
             $service->action($request->only(array_keys($this->validatorRules)));
             flash('密碼已修改成功，下次登入時請使用新密碼', 'success');
+
             return redirect($this->redirect ?? '/user/account/password');
         } catch (CurrentPasswordNotMatchException $e) {
             flash('現在密碼錯誤，無法修改密碼', 'danger');
+
             return redirect()->back();
         }
     }
