@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'user'], function() {
+Route::group(['prefix' => 'user'], function () {
     Route::get('/account/setting', 'User\Account\SettingController@getSetting');
     Route::post('/account/setting', 'User\Account\SettingController@postSetting');
 
