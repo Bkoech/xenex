@@ -59,6 +59,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ url('/user/account/setting') }}">設定</a></li>
+                                    <li class="divider"></li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -77,7 +79,9 @@
                 </div>
             </div>
         </nav>
-
+        <div class="container">
+            @include('flash::message')
+        </div>
         @yield('content')
     </div>
 
