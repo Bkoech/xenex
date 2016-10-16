@@ -17,8 +17,9 @@ class ManageController extends Controller
         $this->middleware('auth');
     }
 
-    public function getCourse(Request $request): View
+    public function getCourse(): View
     {
-        return view($this->view ?? 'course.manage');
+        return view($this->view ?? 'course.manage')
+                ->with('courses', []);
     }
 }
