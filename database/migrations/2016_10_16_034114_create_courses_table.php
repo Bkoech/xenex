@@ -17,8 +17,8 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->string('serial');
             $table->string('name');
-            $table->dateTime('start_at');
-            $table->dateTime('end_at');
+            $table->date('start_at');
+            $table->date('end_at');
             $table->timestamps();
         });
     }
