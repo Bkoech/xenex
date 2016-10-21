@@ -21,3 +21,16 @@ $factory->define(Xenex\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(\Xenex\Course\Course::class, function (Faker\Generator $faker) {
+    $date = [
+        $faker->date(), $faker->date(),
+    ];
+
+    return [
+        'serial' => str_random(5),
+        'name' => $faker->name,
+        'start_at' => strtotime($date[0]) > strtotime($date[1]) ? $date[1] : $date[0],
+        'end_at' => strtotime($date[0]) > strtotime($date[1]) ? $date[0] : $date[1],
+    ];
+});

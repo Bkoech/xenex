@@ -14,6 +14,10 @@ require('laravel-elixir-vue-2');
  */
 
 elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+    mix .sass('app.scss')
+        .copy('node_modules/bootstrap-datepicker/dist/css', 'resources/assets/vendor/date-picker')
+        .styles([
+            '../vendor/date-picker/bootstrap-datepicker3.css'
+        ])
+        .webpack('app.js');
 });
