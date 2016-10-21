@@ -4,10 +4,8 @@ namespace Xenex\Http\Controllers\Course;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
-use Xenex\Http\Requests;
 use Xenex\Http\Controllers\Controller;
 use Xenex\Components\Course\Create\Service as CreateService;
 
