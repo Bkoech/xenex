@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "93380b1f0b5bcc462bcf2326bc1ba4c2",
-    "content-hash": "c7ba9bc0aa2c75b0654fe37d996b090b",
+    "hash": "5f4b64914da81c090794845fdb100d4d",
+    "content-hash": "a60db013597fd91a75bd20575e68fc37",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -305,6 +305,54 @@
                 "tokenizer"
             ],
             "time": "2015-12-05 17:17:57"
+        },
+        {
+            "name": "klaravel/ntrust",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/klaravel/ntrust.git",
+                "reference": "8f801ece52943792ebe7ac34b6b6458d14a5c522"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/klaravel/ntrust/zipball/8f801ece52943792ebe7ac34b6b6458d14a5c522",
+                "reference": "8f801ece52943792ebe7ac34b6b6458d14a5c522",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "5.*",
+                "illuminate/console": "5.*",
+                "illuminate/support": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Klaravel\\Ntrust\\": "src/Ntrust"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Keyur Ajmera",
+                    "email": "ajmerainfo@gmail.com"
+                }
+            ],
+            "description": "Role-Based Permissions for Laravel 5.3+",
+            "keywords": [
+                "admin",
+                "laravel",
+                "ntrust",
+                "permissions",
+                "role",
+                "trust",
+                "user",
+                "user role permissions"
+            ],
+            "time": "2016-10-22 06:19:09"
         },
         {
             "name": "laracasts/flash",

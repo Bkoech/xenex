@@ -8,7 +8,8 @@
         "php": ">=7.0.0",
         "laravel/framework": "5.3.*",
         "predis/predis": "^1.1",
-        "laracasts/flash": "^2.0"
+        "laracasts/flash": "^2.0",
+        "klaravel/ntrust": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
