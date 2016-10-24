@@ -52,5 +52,9 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \Xenex\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+        'role' => \Klaravel\Ntrust\Middleware\NtrustRole::class,
+        'permission' => \Klaravel\Ntrust\Middleware\NtrustPermission::class,
+        'ability' => \Klaravel\Ntrust\Middleware\NtrustAbility::class,
     ];
 }
