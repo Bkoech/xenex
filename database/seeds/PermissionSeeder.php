@@ -16,7 +16,7 @@ class PermissionSeeder extends Seeder
         $this->createRoles();
         $this->createPermissions();
 
-        $this->attach($this->getRole('admin'), $this->getPermission('create-course'));
+        $this->attach($this->getRole('Administrator'), $this->getPermission('create-course'));
     }
 
     protected function createRoles()

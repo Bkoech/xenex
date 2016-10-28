@@ -77,7 +77,7 @@ return [
             | Update the permission if it is in a different namespace.
             |
             */
-            'permission' => 'Xenex\Permission',
+            'permission' => 'Xenex\Ntrust\Permission',
 
             /*
             |--------------------------------------------------------------------------
