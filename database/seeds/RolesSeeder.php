@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Xenex\Ntrust\Role;
-use Xenex\Ntrust\Permission;
 
 class RolesSeeder extends Seeder
 {

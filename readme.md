@@ -11,11 +11,11 @@ Xenex is an online learning center, made by [Laravel 5.3](https://laravel.com)
     * [x] Login/Logout
     * [x] Registration
     * [x] Reset Password
-- Roles
-    - Administrator
-    - Teacher
-    - Teaching Assistant
-    - Student
+- [x] Roles
+    - [x] Administrator
+    - [x] Teacher
+    - [x] Teaching Assistant
+    - [x] Student
 - Course
     - Online Video
     - Teaching Materials
