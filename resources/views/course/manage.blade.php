@@ -4,7 +4,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-1">
-                <a href="{{ url('/course/create') }}"><button class="btn btn-success" type="button">新增課程</button></a>
+                @permission('create-course')
+                <a href="{{ url('/course/create') }}"><button class="btn btn-success">新增課程</button></a>
+                @endpermission
             </div>
         </div>
         <div class="row">

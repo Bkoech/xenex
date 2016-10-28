@@ -1,5 +1,7 @@
 <?php
 
+use Xenex\Ntrust\Role;
+
 class CreateTest extends TestCase
 {
     use DatabaseToTest;
@@ -19,6 +21,7 @@ class CreateTest extends TestCase
     public function testCreatePage()
     {
         $user = factory(\Xenex\User::class)->create();
+        $user->attachRole(Role::where('name', 'Administrator')->firstOrFail());
         $this->actingAs($user);
 
         $this->visit('/course/create')
@@ -28,6 +31,7 @@ class CreateTest extends TestCase
     public function testCreateSuccess()
     {
         $user = factory(\Xenex\User::class)->create();
+        $user->attachRole(Role::where('name', 'Administrator')->firstOrFail());
         $this->actingAs($user);
 
         $course = factory(\Xenex\Course\Course::class)->make();
