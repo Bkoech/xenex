@@ -30,6 +30,12 @@ Xenex is an online learning center, made by [Laravel 5.3](https://laravel.com)
     - Club
 - APIs
 
+## Permissions Table
+
+| Permission Name | Roles |
+| :-- | :-- |
+| create-course | Administrator |
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Xenex, please send an e-mail to Vincent Chi at song374561@gmail.com. All security vulnerabilities will be promptly addressed.
