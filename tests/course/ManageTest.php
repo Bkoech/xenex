@@ -16,13 +16,23 @@ class ManageTest extends TestCase
         parent::tearDown();
     }
 
-    public function testManagePage()
+    public function testManagePageIfUserIsAdmin()
     {
         $user = factory(\Xenex\User::class)->create();
+        $user->attachRole(\Xenex\Ntrust\Role::where('name', 'Administrator')->firstOrFail());
         $this->actingAs($user);
 
         $this->visit('/course')
              ->seePageIs('/course');
+    }
+
+    public function testManagePageIfUserIsNotAdmin()
+    {
+        $user = factory(\Xenex\User::class)->create();
+        $this->actingAs($user);
+
+        $this->get('/course')
+             ->assertResponseStatus(403);
     }
 
     public function testCreateButtonIfUserIsAdmin()
@@ -41,7 +51,7 @@ class ManageTest extends TestCase
         $user = factory(\Xenex\User::class)->create();
         $this->actingAs($user);
 
-        $this->visit('/course')
-             ->dontSee('新增課程');
+        $this->get('/course')
+             ->assertResponseStatus(403);
     }
 }

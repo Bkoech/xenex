@@ -13,10 +13,13 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        $this->clear();
+
         $this->createRoles();
         $this->createPermissions();
 
         $this->attach($this->getRole('Administrator'), $this->getPermission('create-course'));
+        $this->attach($this->getRole('Administrator'), $this->getPermission('manage-course'));
     }
 
     protected function createRoles()
@@ -39,6 +42,7 @@ class PermissionSeeder extends Seeder
     {
         $permissions = [
             'create-course',
+            'manage-course',
         ];
 
         foreach ($permissions as $p) {
@@ -61,5 +65,19 @@ class PermissionSeeder extends Seeder
     private function getPermission(string $name): Permission
     {
         return Permission::where('name', $name)->firstOrFail();
+    }
+
+    protected function clear()
+    {
+        DB::delete('DELETE FROM roles WHERE 1');
+        DB::delete('DELETE FROM permissions WHERE 1');
+
+        if (config('database.default') === 'mysql') {
+            DB::statement('ALTER TABLE roles AUTO_INCREMENT = 1');
+            DB::statement('ALTER TABLE permissions AUTO_INCREMENT = 1');
+        } elseif (config('database.default') === 'sqlite') {
+            DB::statement('DELETE FROM sqlite_sequence WHERE name = ?', ['roles']);
+            DB::statement('DELETE FROM sqlite_sequence WHERE name = ?', ['permissions']);
+        }
     }
 }
