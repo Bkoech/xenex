@@ -13,6 +13,8 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        $this->clear();
+
         $this->createRoles();
         $this->createPermissions();
 
@@ -63,5 +65,14 @@ class PermissionSeeder extends Seeder
     private function getPermission(string $name): Permission
     {
         return Permission::where('name', $name)->firstOrFail();
+    }
+
+    protected function clear()
+    {
+        DB::delete('DELETE FROM roles WHERE 1');
+        DB::delete('DELETE FROM permissions WHERE 1');
+
+        DB::statement('ALTER TABLE roles AUTO_INCREMENT = 1');
+        DB::statement('ALTER TABLE permissions AUTO_INCREMENT = 1');
     }
 }
