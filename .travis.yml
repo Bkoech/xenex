@@ -20,6 +20,4 @@ install:
 script: phpunit -c phpunit.xml --coverage-text
 
 env:
-  - DB_DATABASE=test
-  - DB_USERNAME=root
-  - DB_PASSWORD=
+  - DB_DATABASE=test DB_USERNAME=root DB_PASSWORD=
