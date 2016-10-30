@@ -17,6 +17,7 @@ class PermissionSeeder extends Seeder
         $this->createPermissions();
 
         $this->attach($this->getRole('Administrator'), $this->getPermission('create-course'));
+        $this->attach($this->getRole('Administrator'), $this->getPermission('manage-course'));
     }
 
     protected function createRoles()
@@ -39,6 +40,7 @@ class PermissionSeeder extends Seeder
     {
         $permissions = [
             'create-course',
+            'manage-course',
         ];
 
         foreach ($permissions as $p) {
