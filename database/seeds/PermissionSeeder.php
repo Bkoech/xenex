@@ -72,7 +72,12 @@ class PermissionSeeder extends Seeder
         DB::delete('DELETE FROM roles WHERE 1');
         DB::delete('DELETE FROM permissions WHERE 1');
 
-        DB::statement('ALTER TABLE roles AUTO_INCREMENT = 1');
-        DB::statement('ALTER TABLE permissions AUTO_INCREMENT = 1');
+        if (config('database.default') === 'mysql') {
+            DB::statement('ALTER TABLE roles AUTO_INCREMENT = 1');
+            DB::statement('ALTER TABLE permissions AUTO_INCREMENT = 1');
+        } elseif (config('database.default') === 'sqlite') {
+            DB::statement('DELETE FROM sqlite_sequence WHERE name = \'role\'');
+            DB::statement('DELETE FROM sqlite_sequence WHERE name = \'permissions\'');
+        }
     }
 }
