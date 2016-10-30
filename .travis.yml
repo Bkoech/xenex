@@ -16,8 +16,8 @@ before_script:
 
 install:
   - composer install --prefer-dist --optimize-autoloader --quiet
-  - php artisan migrate
-  - php artisan db:seed
+  - php artisan migrate -n -q
+  - php artisan db:seed -n -q
 
 script: phpunit -c phpunit.xml --coverage-text
 
