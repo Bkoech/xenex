@@ -13,6 +13,7 @@ class ManageController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('permission:manage-course');
     }
 
     public function getCourse(): View

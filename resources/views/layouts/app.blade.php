@@ -45,7 +45,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         @if (Auth::check())
-                            <li><a href="{{ url('/course') }}">課程管理</a></li>
+                            @permission('manage-course')
+                                <li><a href="{{ url('/course') }}">課程管理</a></li>
+                            @endpermission
                         @endif
                     </ul>
 
