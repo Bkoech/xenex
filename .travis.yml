@@ -8,7 +8,18 @@ sudo: false
 env:
   - APP_DEBUG=false
 
+service:
+  - mysql
+
+before_script:
+  - mysql -e 'create database test;'
+
 install:
   - composer install --prefer-dist --optimize-autoloader --quiet
 
 script: phpunit -c phpunit.xml --coverage-text
+
+env:
+  - DB_DATABASE=test
+  - DB_USERNAME=root
+  - DB_PASSWORD=
