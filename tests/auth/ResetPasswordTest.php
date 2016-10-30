@@ -1,21 +1,12 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use MailThief\Testing\InteractsWithMail;
+
 class ResetPasswordTest extends TestCase
 {
-    use DatabaseToTest;
-    use \MailThief\Testing\InteractsWithMail;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->initDatabase();
-    }
-
-    public function tearDown()
-    {
-        $this->resetDatabase();
-        parent::tearDown();
-    }
+    use DatabaseTransactions;
+    use InteractsWithMail;
 
     public function testResetSuccess()
     {

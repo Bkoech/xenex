@@ -1,20 +1,10 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
 class ManageTest extends TestCase
 {
-    use DatabaseToTest;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->initDatabase();
-    }
-
-    public function tearDown()
-    {
-        $this->resetDatabase();
-        parent::tearDown();
-    }
+    use DatabaseTransactions;
 
     public function testManagePageIfUserIsAdmin()
     {
