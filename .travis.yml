@@ -11,10 +11,8 @@ env:
 service:
   - mysql
 
-before_script:
-  - mysql -e 'create database test;'
-
 install:
+  - mysql -e 'create database test;'
   - composer install --prefer-dist --optimize-autoloader --quiet
   - php artisan migrate --force
   - php artisan db:seed --force
