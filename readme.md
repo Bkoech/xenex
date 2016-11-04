@@ -35,6 +35,7 @@ Xenex is an online learning center, made by [Laravel 5.3](https://laravel.com)
 | Permission Name | Roles |
 | :-- | :-- |
 | create-course | Administrator |
+| manage-course | Administrator |
 
 ## Security Vulnerabilities
 
